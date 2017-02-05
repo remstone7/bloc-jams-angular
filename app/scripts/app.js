@@ -10,6 +10,7 @@
                 // helps avoids $location error
                 requireBase: false
          });
+         
          // Setup the template routes
          $stateProvider
          .state('landing', {
