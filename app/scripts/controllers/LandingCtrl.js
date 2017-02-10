@@ -2,7 +2,7 @@
     function LandingCtrl(){
 //        add heroTitle as a property to LandingCtrl
         this.heroTitle = "Turn the Music Up";
-    }
+    } 
     
     angular
         //retrieve already defined module (from app.js)
