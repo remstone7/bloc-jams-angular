@@ -1,9 +1,12 @@
 (function(){
-    function AlbumCtrl(){
-        this.albumData = albumPicasso;
+    // inject the Fixtures service
+    function AlbumCtrl(Fixtures){
+        // use fixtures method
+        this.albumData = Fixtures.getAlbum();
     }
     
     angular
         .module('blocJams')
-        .controller('AlbumCtrl', AlbumCtrl);
+        // add dependency injection (make usable by controller)
+        .controller('AlbumCtrl', ['Fixtures', AlbumCtrl]);
 })();
