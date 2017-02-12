@@ -36,11 +36,25 @@
          };
         
         
-        // return the albumPicasso
+        // public method getAlbum
         Fixtures.getAlbum = function(){
             return albumPicasso;
         };
         
+        // public method getCollection
+        Fixtures.getCollection = function(numberOfAlbums){
+        // return array with specified albumP objects pushed to it
+           var albums = [];
+            
+            for (var i = 0; i < numberOfAlbums; i ++){
+                albums.push(angular.copy(albumPicasso));
+            }
+            return albums;
+            
+        };
+        
+        
+
         
         return Fixtures;
     }
