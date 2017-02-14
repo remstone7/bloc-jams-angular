@@ -30,6 +30,22 @@
             currentSong = song;
         };
         
+        /**
+        *@function playSong
+        *@desc plays current buzz object and set the playing property of the song to true
+        *@param object
+        */
+        var playSong = function(song){
+            currentBuzzObject.play();
+            song.playing =true;
+        };
+        /**
+        *@function pauseSong
+        *@desc pausess current buzz object and set the pause property of the song to false
+        *@param object
+        */
+        
+        
         //play function
         SongPlayer.play = function(song){
             // if song is not current song
@@ -37,15 +53,14 @@
                 //set the song
                 setSong(song);
                 //play song
-                currentBuzzObject.play();
-                song.playing = true;
+                playSong(song);
                 
             //if song is already current song, it must be paused    
             }else if(currentSong === song){
                 //check to see if paused
                 if(currentBuzzObject.isPaused()){
                     //play the song
-                    currentBuzzObject.play();
+                    playSong();
                 }
             }
             
