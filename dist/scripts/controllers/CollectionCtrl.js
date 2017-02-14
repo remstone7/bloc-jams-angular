@@ -7,5 +7,5 @@
     angular
         // add contorller to blocJams app
         .module('blocJams')
-        .controller('CollectionCtrl', CollectionCtrl);
+        .controller('CollectionCtrl', ['Fixtures',  CollectionCtrl]);
 })();
