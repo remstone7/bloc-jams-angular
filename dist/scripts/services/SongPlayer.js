@@ -1,6 +1,6 @@
 (function(){
     // injext fixtures
-    function SongPlayer($rootScope, Fixtures) {
+    function SongPlayer(Fixtures) {
         var SongPlayer = {};
         
         /**
@@ -22,9 +22,18 @@
         */
         var playSong = function(song){
             currentBuzzObject.play();
-            song.playing =true;
+            song.playing = true;
         };
-        
+        /**
+        *@function stopSong
+        *@desc stops current buzz object and set the playing property of the song to false
+        *@param object
+        */
+        var stopSong = function(song) {
+            currentBuzzObject.stop();
+            song.playing = null;
+
+        };
         
         /**
         * @function setSong
@@ -111,11 +120,30 @@
             currentSongIndex--;
             // if less than 0
             if (currentSongIndex < 0) {
-                // stop the song
-                currentBuzzObject.stop();
-                // make value of current song to first song
-                SongPlayer.currentSong.playing = null;
+                stopSong(SongPlayer.currentSong);
             // not less than 0    
+            }else{
+                // store the current song index
+                var song = currentAlbum.songs[currentSongIndex];
+                //play and set the song
+                setSong(song);
+                playSong(song);
+            }
+        };
+        
+        /**
+        *@func previousSong
+        *@desc go to the previous song of the current index
+        */
+        SongPlayer.next = function() {
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
+            var lastSongIndex = currentAlbum.songs.length - 1;
+            // if less than 0
+            if (currentSongIndex > lastSongIndex) {
+                // stop the song
+               stopSong(SongPlayer.currentSong);
+            // not greater than last song   
             }else{
                 // store the current song index
                 var song = currentAlbum.songs[currentSongIndex];
@@ -134,5 +162,5 @@
     //tie to bloc jams
         .module('blocJams')
 //    factory recipe and inject dependencies
-        .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
+        .factory('SongPlayer', [ 'Fixtures', SongPlayer]);
 })();
