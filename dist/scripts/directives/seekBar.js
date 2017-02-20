@@ -29,8 +29,8 @@
                     scope.value = newValue;
                 });
  
-                attributes.$observe('max', function(newValue) {
-                    scope.max = newValue;
+                attributes.$observe('max', function(abc) {
+                    scope.max = abc;
                 });
                 
                 

@@ -189,7 +189,7 @@
             if (currentBuzzObject){
                 currentBuzzObject.setVolume(volume);
             }
-            SongPlayer.volume = volume;
+//            SongPlayer.volume = volume;
         };
         return SongPlayer;
     }
