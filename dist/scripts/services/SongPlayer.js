@@ -10,6 +10,13 @@
         var currentAlbum = Fixtures.getAlbum();
         
         /**
+        * @desc default volume for song
+        * @type number
+        */
+        SongPlayer.volume = 80;
+        
+        
+        /**
         * @desc Buzz object audio file
         * @type {Object}
         */
@@ -173,7 +180,17 @@
                 currentBuzzObject.setTime(time);
             }
         };
-        
+        /**
+        * @function setVolume
+        * @desc Set volume for songs
+        * @param {Number} time
+        */
+        SongPlayer.setVolume = function(volume){
+            if (currentBuzzObject){
+                currentBuzzObject.setVolume(volume);
+            }
+            SongPlayer.volume = volume;
+        };
         return SongPlayer;
     }
     
